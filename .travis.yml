@@ -39,8 +39,10 @@ before_script:
   - if [[ "$DB" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS hello_world_test;" -U postgres; fi
   - if [[ "$DB" == "pgsql" ]]; then psql -c "create database hello_world_test;" -U postgres; fi
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS hello_world_test;" -uroot; fi
-  - php /home/travis/.phpenv/versions/hhvm/bin/composer.phar self-update
+  - composer self-update
   
+install:
+  - travis_retry composer install --no-interaction --ignore-platform-reqs
   
 # omitting "script:" will default to phpunit
 # use the $DB env variable to determine the phpunit.xml to use
