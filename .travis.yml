@@ -39,7 +39,7 @@ before_script:
   - if [[ "$DB" == "pgsql" ]]; then psql -c "DROP DATABASE IF EXISTS hello_world_test;" -U postgres; fi
   - if [[ "$DB" == "pgsql" ]]; then psql -c "create database hello_world_test;" -U postgres; fi
   - if [[ "$DB" == "mysql" ]]; then mysql -e "create database IF NOT EXISTS hello_world_test;" -uroot; fi
-  - php /home/travis/.phpenv/versions/hhvm/bin/composer self-update
+  - php /home/travis/.phpenv/versions/hhvm/bin/composer.phar self-update
   
   
 # omitting "script:" will default to phpunit
